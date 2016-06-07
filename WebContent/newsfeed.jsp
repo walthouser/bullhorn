@@ -7,10 +7,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Bullhorn</title>
-<jsp:include page="bootstrap.jsp"></jsp:include>
+<jsp:include page="/bootstrap.jsp"></jsp:include>
 </head>
 <body>
-<jsp:include page="navbar.jsp"></jsp:include>
+<jsp:include page="/navbar.jsp"></jsp:include>
 <h1>This is the News Feed Page</h1>
 <div class="container">
 <table class="table table-bordered">
@@ -20,12 +20,11 @@
 	<tbody>
 	<c:forEach var="post" items="${posts}">
 	<tr>
-	<td><a href="ProfileServlet?action=viewprofile&userid=<c:out value="${post.bhuser.bhuserid}"/>">
-
-	<c:out value="${post.bhuse.useremail}"/	</a></c:out></td>
+	<td><a href="ProfileServlet?action=viewprofile&userid=<c:out value="${post.bhuser.bhuserid}" />">
+	<c:out value="${post.bhuser.useremail}">	</c:out></a></td>
 	<td>
 	<c:out value="${post.posttext}"/></td>
-	<td><fmt.formatDate value"${post.postdate}" pattern="yy-mm-dd"/></td>td>
+	<td><fmt.formatDate value"${post.postdate}" pattern="yy-mm-dd"/></td>
 	</tr>
 	</c:forEach>
 	</tbody>
@@ -33,6 +32,6 @@
 </table>
 
 </div>
-
+<jsp:include page="/footer.jsp"></jsp:include>
 </body>
 </html>

@@ -3,9 +3,9 @@ package customTools;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class DBUtil {
+public class DbUtil {
 	private static final EntityManagerFactory emf = 
-			Persistence.createEntityManagerFactory("forthy2");
+			Persistence.createEntityManagerFactory("bullhorn");
 	public static EntityManagerFactory getEmFactory() {
 		return emf;
 	}

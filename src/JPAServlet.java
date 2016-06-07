@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import customTools.DBUtil;
+import customTools.DbUtil;
 
 /**
  * Servlet implementation class JPAServlet
@@ -31,7 +31,7 @@ public class JPAServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		EntityManager em = DBUtil.getEmFactory().createEntityManager(); 
+		EntityManager em = DbUtil.getEmFactory().createEntityManager(); 
 		try {
 			model.Employee cust = em.find(model.Employee.class, (long)102); 
 			System.out.println(cust.getFirstName());
