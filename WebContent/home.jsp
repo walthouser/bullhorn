@@ -14,22 +14,40 @@ String email = user.getEmail();
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Home</title>
 <body>
-<h1>Home</h1>
-
-<h1>Welcome <%=username%> with email of <%=email%></h1>
-<table caption="News Feed">
-<tr>
-<th>Name</th><th>Text</th><th>Date</th></tr>
-<tr><td>Tom</td><td>blah blah blah</td><td>May 25, 2016</td></tr>
-<tr><td>Bill</td><td>blah blah blah</td><td>May 23, 2016</td></tr>
-<tr><td>Joe</td><td>blah blah blah</td><td>May 21, 2016</td></tr> 
-</table>
+<h1>This is the home page</h1>
+<form role="form" action="PostServ" method="post" onsubmit="return validate(this);">
+ <div class="form-group"> 
+ <label for="post">Create New Post (141 char):</label>
+ <textarea name= "posttext" id="posttext" class="form-control" rows="2" placeholder= "Express yourself!" maxlength="141"></textarea>
+ <div id="textarea_feedback"></div>
+ </div> 
+ <div class = "form-group"> 
+ <input type="submit" value="Submit" id="submit"/>
+ <input type="reset" value="Clear"/>
+ </div> 
+ </form> 
 
 <p>
+<script>
+$(document).ready(function() {
+ var text_max = 141;
+ $('#textarea_feedback').html(text_max + ' characters remaining');
+$('#posttext').keyup(function() {
+ var text_length = $('#posttext').val().length;
+ var text_remaining = text_max - text_length;
+$('#textarea_feedback').html(text_remaining + ' characters remaining');
+ });
+});
 
-<form action="login.jsp">
-  <input type="submit" value="Log Out">
-  </form>
+function validate(form) {
+ valid = true;
+ if ($('#posttext').val().length==0){
+ alert("You may not submit an empty post.");
+ valid = false;
+ }
+ return valid;
+}
+</script>
   </p>
 </body>
 </html>
