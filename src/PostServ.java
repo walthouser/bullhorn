@@ -52,8 +52,7 @@ public class PostServ extends HttpServlet {
     		 }
     		 
     		 //get user information from session so we can connect to the db
-    		 Bhuser user = (Bhuser)session.getAttribute("user");
-    		 
+    		 Bhuser user = (Bhuser)session.getAttribute("user");  		 
     		 
     		 //get a populated bhuser object since we'll add that to the post
     		 EntityManager em = DbUtil.getEmFactory().createEntityManager();

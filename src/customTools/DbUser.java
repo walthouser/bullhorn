@@ -70,11 +70,11 @@ public class DbUser {
 		EntityManager em = DbUtil.getEmFactory().createEntityManager();
 		String qString = "Select u from Bhuser u "
 				+ "where u.useremail = :useremail";
-		TypedQuery q = em.createQuery(qString, Bhuser.class);
+		TypedQuery q = em.createQuery(qString, model.Bhuser.class);
 		q.setParameter("useremail", email);
-		Bhuser user = null;
+		model.Bhuser user = null;
 		try {
-			user = q.getSingleResult();
+			user = (model.Bhuser) q.getSingleResult();
 		}catch (NoResultException e){
 			System.out.println(e);
 		}finally{
@@ -82,8 +82,9 @@ public class DbUser {
 		}
 		return user;	
 	}
-	public static boolean isValidUser(Bhuser user)
+	public static boolean isValidUser(model.Bhuser user)
 	{
+		/*		*/
 		EntityManager em = DbUtil.getEmFactory().createEntityManager();
 		String qString = "Select count(b.bhuserid) from Bhuser b "
 			+ "where b.useremail = :useremail and b.userpassword = :userpass";
@@ -93,7 +94,7 @@ public class DbUser {
 		q.setParameter("userpass", user.getUserpassword());
 		
 		try{
-			long CountOfUserId = q.getSingleResult();
+			long CountOfUserId = (long) q.getSingleResult();
 			if (CountOfUserId > 0)
 			{
 				result = true;
@@ -105,6 +106,8 @@ public class DbUser {
 		finally{
 				em.close();		
 		}	
+
+//		boolean result=true;
 		return result;		
 	}	
 }
